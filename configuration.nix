@@ -11,8 +11,13 @@
     ];
 
   # Use the systemd-boot EFI boot loader.
+  
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelParams = [ "intel_iommu=on" ];
+  boot.blacklistedKernelModules = [ "nvidia" "nouveau" ];
+  boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" ];
+  boot.extraModprobeConfig = "options vfio-pci ids=8086:1901,10de:17c8,10de:0fb0";
 
   networking.hostName = "noir"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
