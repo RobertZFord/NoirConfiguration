@@ -1,2 +1,5 @@
 # nixos specific construct
 result
+
+# contains password data
+smb-secrets
