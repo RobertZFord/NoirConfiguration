@@ -119,7 +119,7 @@
     };
     xserver = {
       enable = true;
-      autorun = false; # temporary as we flesh out more basic items like udev rules, networking, and shares
+      # autorun = false;
       layout = "us";
       displayManager.sddm.enable = true;
       desktopManager.plasma5.enable = true;
