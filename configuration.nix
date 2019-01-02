@@ -22,6 +22,18 @@
   networking.hostName = "noir"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
+  networking.interfaces = {
+    eth0 = {
+      ipv4.addresses = []; # uses DHCP
+    };
+    eth1 = {
+      ipv4.addresses = [{
+        address = "192.168.2.100";
+        prefixLength = 24;
+      }];
+      # no DNS necessary as this is a PTP link with static IP endpoints
+    };
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
