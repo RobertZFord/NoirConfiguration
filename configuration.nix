@@ -50,6 +50,13 @@
     };
   };
 
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemuOvmf = true; # true by default, but I would like to be reminded of its presence, until otherwise noted
+    };
+  };
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -75,6 +82,7 @@
 
     usbutils
     pciutils
+    virtmanager
 
     firefox
   ];
@@ -141,7 +149,7 @@
       hashedPassword = "$6$DNPRqZfOcuCU8$5vZ6bbh.WyFywdjAcoXsXcygAg9aJ30G2Dbwe8Ap7f/vAij4KQKpzP0R0tJy9nDM4RlhBjPxIQ2R6FkSztqvp1";
       isNormalUser = true;
       home = "/home/rob";
-      extraGroups = [ "wheel" "networkmanager" ];
+      extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
       uid = 1000;
       createHome = true;
     };
