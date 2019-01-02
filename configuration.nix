@@ -40,6 +40,16 @@
     };
   };
 
+  fileSystems = {
+    "/mnt/nas" = {
+      device = "//192.168.2.1/DataVolume";
+      fsType = "cifs";
+      options = let
+        automount_options = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+      in ["${automount_options},credentials=/etc/nixos/smb-secrets"];
+    };
+  };
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
