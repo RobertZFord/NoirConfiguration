@@ -97,6 +97,10 @@
       displayManager.sddm.enable = true;
       desktopManager.plasma5.enable = true;
     };
+    udev.extraRules = ''
+    KERNEL=="eth*", ATTR{address}=="d0:50:99:98:1a:cf", NAME="eth0"
+    KERNEL=="eth*", ATTR{address}=="d0:50:99:98:1a:cd", NAME="eth1"
+    '';
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
