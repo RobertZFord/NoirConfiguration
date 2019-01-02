@@ -10,28 +10,33 @@
       ./hardware-configuration.nix
     ];
 
-  # Use the systemd-boot EFI boot loader.
-  
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [ "intel_iommu=on" ];
-  boot.blacklistedKernelModules = [ "nvidia" "nouveau" ];
-  boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" ];
-  boot.extraModprobeConfig = "options vfio-pci ids=8086:1901,10de:17c8,10de:0fb0";
-
-  networking.hostName = "noir"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;
-  networking.interfaces = {
-    eth0 = {
-      ipv4.addresses = []; # uses DHCP
+  boot = {
+    loader = {
+      # Use the systemd-boot EFI boot loader.
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
     };
-    eth1 = {
-      ipv4.addresses = [{
-        address = "192.168.2.100";
-        prefixLength = 24;
-      }];
-      # no DNS necessary as this is a PTP link with static IP endpoints
+    kernelParams = [ "intel_iommu=on" ];
+    blacklistedKernelModules = [ "nvidia" "nouveau" ];
+    kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" ];
+    extraModprobeConfig = "options vfio-pci ids=8086:1901,10de:17c8,10de:0fb0";
+  };
+
+  networking = {
+    hostName = "noir"; # Define your hostname.
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    networkmanager.enable = true;
+    interfaces = {
+      eth0 = {
+        ipv4.addresses = []; # uses DHCP
+      };
+      eth1 = {
+        ipv4.addresses = [{
+          address = "192.168.2.100";
+          prefixLength = 24;
+        }];
+        # no DNS necessary as this is a PTP link with static IP endpoints
+      };
     };
   };
 
