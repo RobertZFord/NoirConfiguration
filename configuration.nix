@@ -129,8 +129,12 @@
       enable = true;
       # autorun = false;
       layout = "us";
-      displayManager.sddm.enable = true;
-      desktopManager.plasma5.enable = true;
+      displayManager = {
+        sddm.enable = true;
+      }
+      desktopManager = {
+        plasma5.enable = true;
+      }
     };
     udev.extraRules = ''
     KERNEL=="eth*", ATTR{address}=="d0:50:99:98:1a:cf", NAME="eth0"
