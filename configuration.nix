@@ -133,6 +133,7 @@
         sddm.enable = true;
       };
       desktopManager = {
+        xterm.enable = false; # ...why?
         plasma5.enable = true;
       };
     };
