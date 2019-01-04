@@ -103,20 +103,9 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-
-  # Enable touchpad support.
-  # services.xserver.libinput.enable = true;
 
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
@@ -143,11 +132,6 @@
     '';
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.guest = {
-  #   isNormalUser = true;
-  #   uid = 1000;
-  # };
   users = {
     mutableUsers = false;
     users.rob = {
