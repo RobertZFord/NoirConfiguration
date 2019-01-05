@@ -121,6 +121,11 @@
     ntp = { 
       enable = true; 
     };
+    openssh = {
+      enable = true;
+      passwordAuthentication = false;
+      permitRootLogin = "no";
+    };
     xserver = {
       enable = true;
       # autorun = false;
