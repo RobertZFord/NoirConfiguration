@@ -38,6 +38,12 @@
         # no DNS necessary as this is a PTP link with static IP endpoints
       };
     };
+    firewall = {
+      enable = true; # default, but still
+      allowedTCPPorts = [
+        22
+      ];
+    };
   };
 
   fileSystems = {
